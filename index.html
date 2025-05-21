@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Găsește oportunități de muncă în Europa. Posturi disponibile în Spania și Italia pentru români.">
+    <meta name="keywords" content="locuri de munca europa, munca spania, munca italia, joburi romani">
+    <meta name="author" content="yassinespino9">
+    <title>JobsEurope - Oportunități de Muncă în Europa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #f5f6fa;
+            --text-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 70px;
+        }
+
+        /* Header Styles */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            text-align: center;
+            padding: 6rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero h1,
+        .hero p {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Jobs Grid */
+        .jobs-grid {
+            max-width: 1200px;
+            margin: 2rem auto 6rem;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 1rem auto;
+        }
+
+        /* Job Card */
+        .job-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .job-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .flag {
+            font-size: 2.5rem;
+        }
+
+        .salary {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Apply Button */
+        .apply-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent-color), #c0392b);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .apply-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(231, 76, 60, 0.3);
+        }
+/* Benefits Section */
+.benefits {
+    background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    padding: 6rem 2rem;
+    margin-top: 4rem;
+}
+
+.benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Content Locker Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1100;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.5s ease;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #ddd;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.timer-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.timer {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 1rem 0;
+}
+
+.steps {
+    margin-bottom: 2rem;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.step-content p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.cta-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--accent-color), #c0392b);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.cta-button i {
+    margin-left: 0.5rem;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+.trust-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.trust-item i {
+    color: var(--success-color);
+}
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Mobile Sticky Apply Button */
+        .mobile-sticky-apply {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .mobile-sticky-apply {
+                display: block;
+            }
+
+            .job-card .apply-btn {
+                display: block;
+            }
+
+            .trust-indicators {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky-header" role="banner">
+        <div class="header-content">
+            <div class="logo">
+                <h1>JobsEurope</h1>
+            </div>
+            <nav role="navigation">
+                <ul>
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#jobs">Joburi</a></li>
+                    <li><a href="#about">Despre Noi</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main role="main">
+        <!-- Hero Section with Banner Image -->
+        <section class="hero" id="home">
+            <div class="hero-banner">
+                <img src="https://i.imgur.com/moQc6uj.jpeg" alt="Banner" class="banner-image">
+            </div>
+            <h1>Găsește Jobul Ideal în Europa</h1>
+            <p>Oportunități de muncă în Spania și Italia pentru români</p>
+        </section>
+
+    <!-- Jobs Section -->
+    <section id="jobs" class="jobs-section">
+        <h2 class="section-title">Joburi Disponibile</h2>
+        <div class="jobs-grid">
+            <!-- Job cards will be inserted here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="about">
+        <h2 class="section-title">De ce să alegi JobsEurope?</h2>
+        <div class="benefits-container">
+            <div class="benefit-card">
+                <i class="fas fa-euro-sign benefit-icon"></i>
+                <h3>Salarii Competitive</h3>
+                <p>Câștiguri peste media din România</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-home benefit-icon"></i>
+                <h3>Cazare Asigurată</h3>
+                <p>Suport pentru găsirea locuinței</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-heartbeat benefit-icon"></i>
+                <h3>Asigurare Medicală</h3>
+                <p>Acoperire medicală completă</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-graduation-cap benefit-icon"></i>
+                <h3>Dezvoltare Profesională</h3>
+                <p>Oportunități de creștere în carieră</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Content Locker Modal -->
+<div id="contentLocker" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>🌟 Un pas mai aproape de jobul tău ideal!</h2>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="timer-container">
+                <p>Această oportunitate expiră în:</p>
+                <div class="timer">
+                    <span id="minutes">05</span>:<span id="seconds">00</span>
+                </div>
+            </div>
+            <div class="steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Pentru a aplica, urmați acești pași simpli:</h3>
+                        <p>Faceți clic pe butonul de mai jos pentru a continua</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Completați un scurt formular</h3>
+                        <p>Vă va lua mai puțin de 2 minute</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Primiți detaliile complete</h3>
+                        <p>Veți fi contactat în cel mai scurt timp</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-container">
+                <a href="https://smrturl.co/9d0d06d" target="_blank" class="cta-button" id="ctaButton">
+                    CONTINUĂ PENTRU A APLICA
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Sigur</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Răspuns Rapid</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verificat</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer role="contentinfo">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>JobsEurope</h3>
+            <p>Conectăm românii cu cele mai bune oportunități de muncă în Europa.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: info@jobseurope.online</p>
+            <p>Tel: +1 343 489-6570</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 JobsEurope. Toate drepturile rezervate.</p>
+    </div>
+</footer>
+
+<!-- Mobile Sticky Apply Button -->
+<div class="mobile-sticky-apply">
+    <button class="apply-btn" onclick="_KB()">
+        Aplică Acum
+    </button>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Configuration
+    const CONFIG = {
+        targetURL: 'https://smrturl.co/9d0d06d',
+        timerDuration: 300,
+    };
+
+    // Jobs Data
+    const jobs = [
+        {
+            title: "Muncitor Depozit în Spania",
+            country: "españa",
+            flag: "🇪🇸",
+            description: "Oportunitate de muncă în Barcelona. Contract full-time, cazare asigurată.",
+            location: "Barcelona",
+            salary: "1500-2000€"
+        },
+        {
+            title: "Constructor în Italia",
+            country: "italia",
+            flag: "🇮🇹",
+            description: "Angajăm constructori cu experiență în Roma. Salariu competitiv.",
+            location: "Roma",
+            salary: "2000-2500€"
+        },
+        {
+            title: "Îngrijitor Bătrâni Italia",
+            country: "italia",
+            flag: "🇮🇹",
+            description: "Căutăm îngrijitori pentru azil de bătrâni în Milano.",
+            location: "Milano",
+            salary: "1800-2200€"
+        },
+        {
+            title: "Agricultor Spania",
+            country: "españa",
+            flag: "🇪🇸",
+            description: "Muncă sezonieră în agricultură, regiunea Valencia.",
+            location: "Valencia",
+            salary: "1400-1800€"
+        }
+    ];
+
+    // Initialize page
+    function initializePage() {
+        createJobCards();
+        setupEventListeners();
+    }
+
+    // Create job cards
+    function createJobCards() {
+        const jobsGrid = document.querySelector('.jobs-grid');
+        if (!jobsGrid) return;
+
+        jobs.forEach(job => {
+            const jobCard = document.createElement('div');
+            jobCard.className = 'job-card';
+            jobCard.setAttribute('role', 'article');
+            
+            jobCard.innerHTML = `
+                <div class="job-header">
+                    <span class="flag" role="img" aria-label="Steagul ${job.country}">${job.flag}</span>
+                    <h3>${job.title}</h3>
+                </div>
+                <p>${job.description}</p>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>${job.location}</span>
+                </p>
+                <p class="salary">
+                    <i class="fas fa-euro-sign"></i>
+                    <span>${job.salary}</span>
+                </p>
+                <button class="apply-btn" onclick="_KB()">
+                    Aplică Acum
+                </button>
+            `;
+            
+            jobsGrid.appendChild(jobCard);
+        });
+    }
+        // Content Locker Functions
+        function showContentLocker() {
+            const modal = document.getElementById('contentLocker');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                startTimer();
+                updateSteps();
+            }
+        }
+
+        function closeContentLocker() {
+            const modal = document.getElementById('contentLocker');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        function updateSteps() {
+            const steps = document.querySelectorAll('.step');
+            let currentStep = 0;
+
+            function activateNextStep() {
+                if (currentStep < steps.length) {
+                    steps.forEach(step => step.classList.remove('active'));
+                    steps[currentStep].classList.add('active');
+                    currentStep++;
+
+                    if (currentStep < steps.length) {
+                        setTimeout(activateNextStep, 1500);
+                    }
+                }
+            }
+
+            activateNextStep();
+        }
+
+        function startTimer() {
+            let duration = CONFIG.timerDuration;
+            const timerDisplay = {
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+
+            const timer = setInterval(() => {
+                const minutes = parseInt(duration / 60, 10);
+                const seconds = parseInt(duration % 60, 10);
+
+                if (timerDisplay.minutes && timerDisplay.seconds) {
+                    timerDisplay.minutes.textContent = minutes.toString().padStart(2, '0');
+                    timerDisplay.seconds.textContent = seconds.toString().padStart(2, '0');
+                }
+
+                if (--duration < 0) {
+                    clearInterval(timer);
+                    closeContentLocker();
+                }
+            }, 1000);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            const closeButton = document.querySelector('.close-modal');
+            const contentLocker = document.getElementById('contentLocker');
+            const ctaButton = document.getElementById('ctaButton');
+
+            if (closeButton) {
+                closeButton.addEventListener('click', closeContentLocker);
+            }
+
+            if (contentLocker) {
+                contentLocker.addEventListener('click', (e) => {
+                    if (e.target === contentLocker) {
+                        closeContentLocker();
+                    }
+                });
+            }
+
+            if (ctaButton) {
+                ctaButton.href = CONFIG.targetURL;
+            }
+        }
+
+        // Main entry point
+        function _KB() {
+            showContentLocker();
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializePage);
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('An error occurred:', e.message);
+            return false;
+        });
+    </script>
+</body>
+</html>
